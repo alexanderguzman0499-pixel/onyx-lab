@@ -129,7 +129,11 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; text-wra
   color: #0a0b0d;
   font-weight: 800;
   font-family: var(--font-display);
+  animation: markPulse 4s ease-in-out infinite;
 }
+@keyframes markPulse { 0%, 100% { box-shadow: 0 0 0 rgba(201,160,245,0); } 50% { box-shadow: 0 0 14px rgba(201,160,245,0.6); } }
+.ripple { position: absolute; border-radius: 50%; width: 8px; height: 8px; margin: -4px; background: rgba(255,255,255,0.6); transform: scale(0); animation: rippleAnim 0.6s ease-out; pointer-events: none; }
+@keyframes rippleAnim { to { transform: scale(18); opacity: 0; } }
 
 .main-nav { display: flex; align-items: center; gap: 28px; }
 .main-nav a {
@@ -170,45 +174,69 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; text-wra
 }
 .btn-ghost:hover { border-color: var(--border-strong); }
 
-/* Fluid blob background */
+/* Fluid blob background — full page, fixed, mouse-reactive */
 .blob-field {
-  position: absolute;
-  inset: -15% -10%;
+  position: fixed;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
-  filter: blur(70px) saturate(1.3);
-  opacity: 0.5;
+  filter: blur(80px) saturate(1.4);
+  opacity: 0.55;
 }
 .blob-wrap {
   position: absolute;
   inset: 0;
-  transition: transform 0.7s cubic-bezier(.2, .8, .2, 1);
+  transition: transform 0.5s cubic-bezier(.2, .8, .2, 1);
 }
 .blob { position: absolute; border-radius: 50%; mix-blend-mode: screen; }
 .blob-a {
-  width: 44vw; height: 44vw; max-width: 560px; max-height: 560px;
-  left: -6%; top: -10%;
+  width: 42vw; height: 42vw; max-width: 560px; max-height: 560px;
+  left: -8%; top: -6%;
   background: radial-gradient(circle at 30% 30%, var(--iri-1), transparent 70%);
-  animation: morphA 17s ease-in-out infinite;
+  animation: morphA 15s ease-in-out infinite;
 }
 .blob-b {
-  width: 36vw; height: 36vw; max-width: 460px; max-height: 460px;
-  right: -4%; top: 4%;
+  width: 34vw; height: 34vw; max-width: 460px; max-height: 460px;
+  right: -6%; top: 10%;
   background: radial-gradient(circle at 60% 40%, var(--iri-2), transparent 70%);
-  animation: morphB 21s ease-in-out infinite;
+  animation: morphB 18s ease-in-out infinite;
 }
 .blob-c {
-  width: 30vw; height: 30vw; max-width: 380px; max-height: 380px;
-  left: 32%; top: 22%;
+  width: 28vw; height: 28vw; max-width: 380px; max-height: 380px;
+  left: 38%; top: 30%;
   background: radial-gradient(circle at 50% 50%, var(--iri-4), transparent 70%);
-  animation: morphC 15s ease-in-out infinite;
+  animation: morphC 13s ease-in-out infinite;
 }
-@keyframes morphA { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(3%,5%) scale(1.1); } }
-@keyframes morphB { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-4%,3%) scale(0.92); } }
-@keyframes morphC { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(2%,-4%) scale(1.15); } }
+.blob-d {
+  width: 30vw; height: 30vw; max-width: 400px; max-height: 400px;
+  left: 8%; top: 62%;
+  background: radial-gradient(circle at 40% 40%, var(--iri-3), transparent 70%);
+  animation: morphD 19s ease-in-out infinite;
+}
+.blob-e {
+  width: 26vw; height: 26vw; max-width: 340px; max-height: 340px;
+  right: 14%; top: 78%;
+  background: radial-gradient(circle at 55% 45%, var(--iri-1), transparent 70%);
+  animation: morphE 16s ease-in-out infinite;
+}
+@keyframes morphA { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(4%,7%) scale(1.15); } }
+@keyframes morphB { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-5%,4%) scale(0.9); } }
+@keyframes morphC { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(3%,-5%) scale(1.2); } }
+@keyframes morphD { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-3%,-6%) scale(1.12); } }
+@keyframes morphE { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(5%,-3%) scale(0.88); } }
+
+/* Cursor spotlight */
+.cursor-glow {
+  position: fixed; top: 0; left: 0; width: 460px; height: 460px; z-index: 2;
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
+  mix-blend-mode: screen; filter: blur(4px);
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
 
 /* Hero */
-.hero { padding: 88px 0 60px; position: relative; overflow: hidden; }
+.hero { padding: 88px 0 60px; position: relative; }
 .hero-inner {
   position: relative; z-index: 1;
   display: grid;
@@ -276,7 +304,7 @@ section { padding: 80px 0; position: relative; z-index: 1; }
 .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin: 0 0 14px; font-weight: 600; }
 .section-head p { color: var(--text-dim); margin: 0; }
 
-.section-alt { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.section-alt { background: rgba(17,19,24,0.6); backdrop-filter: blur(24px); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
 /* Catalog grid */
 .catalog-grid {
@@ -284,6 +312,15 @@ section { padding: 80px 0; position: relative; z-index: 1; }
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
+.catalog-grid .compound-card:nth-child(1) { transition-delay: 0s; }
+.catalog-grid .compound-card:nth-child(2) { transition-delay: .08s; }
+.catalog-grid .compound-card:nth-child(3) { transition-delay: .16s; }
+.catalog-grid .compound-card:nth-child(4) { transition-delay: .24s; }
+.catalog-grid .compound-card:nth-child(5) { transition-delay: .32s; }
+.catalog-grid .compound-card:nth-child(6) { transition-delay: .4s; }
+.steps .step:nth-child(1) { transition-delay: 0s; }
+.steps .step:nth-child(2) { transition-delay: .1s; }
+.steps .step:nth-child(3) { transition-delay: .2s; }
 
 .compound-card {
   position: relative;
@@ -426,7 +463,8 @@ section { padding: 80px 0; position: relative; z-index: 1; }
 footer {
   border-top: 1px solid var(--border);
   padding: 48px 0 32px;
-  background: var(--bg-soft);
+  background: rgba(17,19,24,0.7);
+  backdrop-filter: blur(24px);
   position: relative; z-index: 1;
 }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
@@ -461,8 +499,9 @@ footer {
 .mt-0 { margin-top: 0; }
 
 @media (prefers-reduced-motion: reduce) {
-  .blob, .iri-text, .mol-node { animation: none !important; }
+  .blob, .iri-text, .mol-node, .logo .mark { animation: none !important; }
   .reveal { transition: none; opacity: 1; transform: none; }
+  .cursor-glow { display: none; }
 }
 
 @media (max-width: 900px) {
