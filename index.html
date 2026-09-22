@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://onyxlab.example.com/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -33,13 +33,69 @@
 
   <main>
     <section class="hero">
+      <div class="blob-field" aria-hidden="true">
+        <div class="blob-wrap" data-depth="1.1"><div class="blob blob-a"></div></div>
+        <div class="blob-wrap" data-depth="0.6"><div class="blob blob-b"></div></div>
+        <div class="blob-wrap" data-depth="1.5"><div class="blob blob-c"></div></div>
+      </div>
       <div class="wrap">
-        <span class="eyebrow">Suministro B2B para investigación</span>
-        <h1>Péptidos y compuestos de <span>grado investigación</span> para laboratorios verificados</h1>
-        <p class="lead">Onyx Lab suministra compuestos de alta pureza con certificado de análisis (COA) a laboratorios, universidades y centros de investigación. Todos los productos se venden exclusivamente para uso en investigación in vitro / preclínica.</p>
-        <div class="hero-actions">
-          <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
-          <a href="#contacto" class="btn btn-ghost">Solicitar cotización</a>
+        <div class="hero-inner">
+          <div>
+            <span class="eyebrow">Suministro B2B para investigación</span>
+            <h1>Péptidos y compuestos de <span class="iri-text">grado investigación</span> para laboratorios verificados</h1>
+            <p class="lead">Onyx Lab suministra compuestos de alta pureza con certificado de análisis (COA) a laboratorios, universidades y centros de investigación. Todos los productos se venden exclusivamente para uso en investigación in vitro / preclínica.</p>
+            <div class="hero-actions">
+              <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+              <a href="#contacto" class="btn btn-ghost">Solicitar cotización</a>
+            </div>
+          </div>
+
+          <div class="molecule-wrap" aria-hidden="true">
+            <svg viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="chainGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#8ab4f8"/>
+                  <stop offset="35%" stop-color="#c9a0f5"/>
+                  <stop offset="65%" stop-color="#f5a8c9"/>
+                  <stop offset="100%" stop-color="#8ff0c9"/>
+                </linearGradient>
+                <radialGradient id="nodeGrad" cx="35%" cy="30%" r="75%">
+                  <stop offset="0%" stop-color="#f4f5f7"/>
+                  <stop offset="100%" stop-color="#9aa0ab"/>
+                </radialGradient>
+              </defs>
+              <polyline points="30,190 75,140 120,170 165,110 210,140 255,80 300,110"
+                fill="none" stroke="url(#chainGrad)" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+              <g class="mol-node" style="animation-delay:0s">
+                <circle cx="30" cy="190" r="11" fill="url(#nodeGrad)" stroke="#8ab4f8" stroke-width="1.5"/>
+                <text x="30" y="212" text-anchor="middle">Gly</text>
+              </g>
+              <g class="mol-node" style="animation-delay:.3s">
+                <circle cx="75" cy="140" r="11" fill="url(#nodeGrad)" stroke="#a89cf3" stroke-width="1.5"/>
+                <text x="75" y="162" text-anchor="middle">Glu</text>
+              </g>
+              <g class="mol-node" style="animation-delay:.6s">
+                <circle cx="120" cy="170" r="11" fill="url(#nodeGrad)" stroke="#c9a0f5" stroke-width="1.5"/>
+                <text x="120" y="192" text-anchor="middle">Pro</text>
+              </g>
+              <g class="mol-node" style="animation-delay:.9s">
+                <circle cx="165" cy="110" r="13" fill="url(#nodeGrad)" stroke="#e0a0dc" stroke-width="1.5"/>
+                <text x="165" y="132" text-anchor="middle">Pro</text>
+              </g>
+              <g class="mol-node" style="animation-delay:1.2s">
+                <circle cx="210" cy="140" r="11" fill="url(#nodeGrad)" stroke="#f5a8c9" stroke-width="1.5"/>
+                <text x="210" y="162" text-anchor="middle">Pro</text>
+              </g>
+              <g class="mol-node" style="animation-delay:1.5s">
+                <circle cx="255" cy="80" r="11" fill="url(#nodeGrad)" stroke="#bcd6b8" stroke-width="1.5"/>
+                <text x="255" y="102" text-anchor="middle">Gly</text>
+              </g>
+              <g class="mol-node" style="animation-delay:1.8s">
+                <circle cx="300" cy="110" r="13" fill="url(#nodeGrad)" stroke="#8ff0c9" stroke-width="1.5"/>
+                <text x="300" y="132" text-anchor="middle">Lys</text>
+              </g>
+            </svg>
+          </div>
         </div>
 
         <div class="stat-row">
@@ -53,7 +109,7 @@
 
     <section id="catalogo">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Catálogo</span>
           <h2>Compuestos disponibles</h2>
           <p>Ficha técnica resumida por compuesto. Los precios y disponibilidad completos se comparten tras la verificación institucional. Todos los lotes incluyen COA (HPLC/MS).</p>
@@ -61,7 +117,7 @@
 
         <div class="catalog-grid">
 
-          <article class="compound-card">
+          <article class="compound-card reveal">
             <div class="cc-top">
               <h3>BPC-157</h3>
               <span class="tag-ruo">RUO</span>
@@ -79,7 +135,7 @@
             </div>
           </article>
 
-          <article class="compound-card">
+          <article class="compound-card reveal">
             <div class="cc-top">
               <h3>TB-500 (Fragmento TB4)</h3>
               <span class="tag-ruo">RUO</span>
@@ -97,7 +153,7 @@
             </div>
           </article>
 
-          <article class="compound-card">
+          <article class="compound-card reveal">
             <div class="cc-top">
               <h3>CJC-1295 (sin DAC)</h3>
               <span class="tag-ruo">RUO</span>
@@ -115,7 +171,7 @@
             </div>
           </article>
 
-          <article class="compound-card">
+          <article class="compound-card reveal">
             <div class="cc-top">
               <h3>Ipamorelina</h3>
               <span class="tag-ruo">RUO</span>
@@ -133,7 +189,7 @@
             </div>
           </article>
 
-          <article class="compound-card">
+          <article class="compound-card reveal">
             <div class="cc-top">
               <h3>GHK-Cu</h3>
               <span class="tag-ruo">RUO</span>
@@ -151,7 +207,7 @@
             </div>
           </article>
 
-          <article class="compound-card">
+          <article class="compound-card reveal">
             <div class="cc-top">
               <h3>Melanotan II</h3>
               <span class="tag-ruo">RUO</span>
@@ -175,23 +231,23 @@
 
     <section id="proceso" class="section-alt">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Verificación</span>
           <h2>Proceso de compra institucional</h2>
           <p>Onyx Lab vende exclusivamente a compradores institucionales verificados. Así funciona el proceso.</p>
         </div>
         <div class="steps">
-          <div class="step">
+          <div class="step reveal">
             <div class="num">01</div>
             <h3>Solicitud de acceso</h3>
             <p>Completas el formulario con los datos de tu laboratorio, institución o empresa y el propósito de investigación.</p>
           </div>
-          <div class="step">
+          <div class="step reveal">
             <div class="num">02</div>
             <h3>Verificación institucional</h3>
             <p>Confirmamos afiliación institucional y firmas del acuerdo de uso exclusivo para investigación (no reventa para consumo humano/veterinario).</p>
           </div>
-          <div class="step">
+          <div class="step reveal">
             <div class="num">03</div>
             <h3>Cotización y despacho</h3>
             <p>Una vez verificado, recibes catálogo completo con precios, COA por lote y condiciones de envío con cadena de frío cuando aplica.</p>
@@ -202,11 +258,11 @@
 
     <section id="cumplimiento">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Cumplimiento</span>
           <h2>Política de uso e investigación</h2>
         </div>
-        <div class="compliance-box">
+        <div class="compliance-box reveal">
           <h3>Aviso obligatorio</h3>
           <ul>
             <li>Todos los productos de Onyx Lab se venden estrictamente para <strong>uso en investigación de laboratorio (Research Use Only)</strong>.</li>
@@ -214,7 +270,7 @@
             <li>La venta está restringida a <strong>laboratorios, universidades, empresas biotecnológicas e instituciones de investigación verificadas</strong>.</li>
             <li>El comprador debe firmar una declaración de uso exclusivo para investigación antes de recibir cotización o despacho.</li>
             <li>Onyx Lab se reserva el derecho de rechazar cualquier solicitud que no cumpla con los requisitos de verificación institucional.</li>
-            <li>Consulta la <a href="compliance.html" style="color:var(--accent)">Política de Cumplimiento completa</a> para más detalles.</li>
+            <li>Consulta la <a href="compliance.html" style="color:var(--iri-1)">Política de Cumplimiento completa</a> para más detalles.</li>
           </ul>
         </div>
       </div>
@@ -222,14 +278,14 @@
 
     <section id="contacto" class="section-alt">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="eyebrow">Contacto</span>
           <h2>Solicita acceso institucional</h2>
           <p>Completa el formulario y un miembro de nuestro equipo se pondrá en contacto para el proceso de verificación.</p>
         </div>
 
         <div class="contact-grid">
-          <form class="form-panel" name="acceso-institucional" method="POST" data-netlify="true" netlify-honeypot="empresa-web" action="/thanks.html">
+          <form class="form-panel reveal" name="acceso-institucional" method="POST" data-netlify="true" netlify-honeypot="empresa-web" action="/thanks.html">
             <input type="hidden" name="form-name" value="acceso-institucional" />
             <p style="display:none">
               <label>No llenar: <input name="empresa-web" /></label>
@@ -266,7 +322,7 @@
             <button type="submit" class="btn btn-primary" style="width:100%">Enviar solicitud</button>
           </form>
 
-          <div class="info-list">
+          <div class="info-list reveal">
             <div class="info-item">
               <div class="ii-icon">✓</div>
               <div><h4>Verificación institucional</h4><p>Toda cuenta nueva pasa por un proceso de verificación antes de recibir precios o realizar pedidos.</p></div>
